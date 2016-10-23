@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161023144740) do
+ActiveRecord::Schema.define(version: 20161023171614) do
+
+  create_table "attachinary_files", force: :cascade do |t|
+    t.integer  "attachinariable_id",   limit: 4
+    t.string   "attachinariable_type", limit: 255
+    t.string   "scope",                limit: 255
+    t.string   "public_id",            limit: 255
+    t.string   "version",              limit: 255
+    t.integer  "width",                limit: 4
+    t.integer  "height",               limit: 4
+    t.string   "format",               limit: 255
+    t.string   "resource_type",        limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attachinary_files", ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
 
   create_table "prices", force: :cascade do |t|
     t.string   "name",       limit: 255
