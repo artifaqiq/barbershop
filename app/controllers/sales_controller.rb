@@ -10,6 +10,7 @@ class SalesController < ApplicationController
   # GET /sales/1
   # GET /sales/1.json
   def show
+
   end
 
   # GET /sales/new

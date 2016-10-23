@@ -12,6 +12,10 @@
   <dd><%= @sale.description %></dd>
 </dl>
 
+<p>
+  <%= cl_image_tag(@sale.photo.path, :width => 800) %>
+</p><br/>
+
 <%= link_to t('.back', :default => t("helpers.links.back")),
               sales_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),

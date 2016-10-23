@@ -10,6 +10,10 @@
   <dd><%= @service.description %></dd>
 </dl>
 
+<p>
+  <%= cl_image_tag(@service.photo.path, :width => 800) %>
+</p><br/>
+
 <%= link_to t('.back', :default => t("helpers.links.back")),
               services_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
