@@ -196,6 +196,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  less-rails
   mysql2 (>= 0.3.13, < 0.5)
   pg
   rails (= 4.2.6)
@@ -204,7 +205,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
-  sprockets (= 3.6.3)
   therubyracer
   turbolinks
   twitter-bootstrap-rails
