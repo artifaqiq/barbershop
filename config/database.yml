@@ -13,9 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: barbershop
-  password: 12345678
-  socket: /var/run/mysqld/mysqld.sock
+#  username: barbershop
+#  password: 12345678
+#  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: Barbershop_production
-  username: Barbershop
-  password: <%= ENV['BARBERSHOP_DATABASE_PASSWORD'] %>
+#  database: Barbershop_production
+#  username: Barbershop
+#  password: <%= ENV['BARBERSHOP_DATABASE_PASSWORD'] %>
