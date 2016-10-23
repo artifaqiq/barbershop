@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @sale.title %>
+</p>
+
+<p>
+  <strong>Percent:</strong>
+  <%= @sale.percent %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @sale.description %>
+</p>
+
+<p>
+  <%= cl_image_tag(@sale.photo.path, :crop => :fill, :width => 800) if @sale.photo %>
+</p>
+
+<%= link_to 'Edit', edit_sale_path(@sale) %> |
+<%= link_to 'Back', sales_path %>
