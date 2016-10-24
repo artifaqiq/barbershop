@@ -1,5 +1,10 @@
 <h1>Welcome to barbershop</h1>
 
+<%= react_component 'Timer', { data: @records } %>
+
+<div id="exmp1">
+</div>
+
 <% 1.times do %>
     <h2>
       <%= Time.new %>
