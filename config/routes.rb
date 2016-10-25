@@ -15,7 +15,8 @@ Rails.application.routes.draw do
 
   scope '/api' do
     post '/show_timetable' => 'time_api#show_timetable'
-
+    post '/create_free_time' => 'time_api#create_free_time'
+    post '/create_busy_time' => 'time_api#create_busy_time'
   end
 
   # Example of regular route:

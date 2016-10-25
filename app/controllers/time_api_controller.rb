@@ -1,33 +1,102 @@
-
 class TimeApiController < ApplicationController
   skip_before_action :verify_authenticity_token
-
   before_action :check_json!
 
-  def show_timetable
+  before_action only: :show_timetable do |controller|
+    unless @json.has_key?('from') && @json.has_key?('to')
+      render json: {
+          error: "Missing property 'from' or 'to'"
+      }
+    end
+  end
 
+  def show_timetable
     from = @json['from'].to_datetime
     to = @json['to'].to_datetime
 
-    frees = FreeTime.where("begin > :from and end < :to", from: from, to: to).to_a
-    busys = BusyTime.where("begin > :from and end < :to", from: from, to: to).to_a
+    if service = @json['service']
+      frees = FreeTime.where("begin >= :from and end <= :to and service = :service", from: from, to: to, service: service).
+          to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
+      busys = BusyTime.where("begin >= :from and end <= :to and service = :service", from: from, to: to, service: service).
+          to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
+    else
+      frees = FreeTime.where("begin >= :from and end <= :to", from: from, to: to).
+          to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
+      busys = BusyTime.where("begin >= :from and end <= :to", from: from, to: to).
+          to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
 
+    end
     render json: {
         from: from,
         to: to,
         now: Date.today,
         frees: frees.to_s,
-        busys: busys.to_s ,
+        busys: busys.to_s,
         status: :ok
     }
+  rescue Exception => e
+    render json: {
+        error: e.to_s
+    }, status: :bad_request
 
   end
 
-  def set_free_time
+  before_action only: :create_free_time do |controller|
+    unless @json.has_key?('from') && @json.has_key?('to') && @json.has_key?('service')
+      render json: {
+          error: "Missing property 'from', 'to' or 'service'"
+      }
+    end
+  end
+
+  def create_free_time
+    params = {
+        begin: @json['from'].to_datetime,
+        end: @json['to'].to_datetime,
+        service: @json['service'],
+    }
+
+    if FreeTime.create(params)
+      render json: {status: "saved"}
+    else
+      render json: {status: "canceled"}
+    end
+
+  rescue ArgumentError => e
+    render json: {
+        error: e.to_s
+    }, status: :bad_request
 
   end
 
-  def set_busy_time
+  before_action only: :create_free_time do |controller|
+    unless @json.has_key?('from') && @json.has_key?('to') && @json.has_key?('service')
+      render json: {
+          error: "Missing property 'from', 'to' or 'service'"
+      }
+    end
+  end
+
+  def create_busy_time
+    params = {
+        begin: @json['from'].to_datetime,
+        end: @json['to'].to_datetime,
+        service: @json['service'],
+        name: @json['name'] || '',
+        phone: @json['phone'] || '',
+        info: @json['info'] || ''
+    }
+
+    if BusyTime.create(params)
+      render json: {status: "saved"}
+    else
+      render json: {status: "canceled"}
+    end
+
+  rescue ArgumentError => e
+    render json: {
+        error: e.to_s
+    }, status: :bad_request
 
   end
 
