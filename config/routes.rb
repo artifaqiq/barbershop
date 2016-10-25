@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     match '*path' => redirect('/'), via: :get
   end
 
+  scope '/api' do
+    post '/show_timetable' => 'time_api#show_timetable'
+
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

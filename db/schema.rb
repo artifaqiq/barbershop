@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024122432) do
+ActiveRecord::Schema.define(version: 20161025130438) do
 
   create_table "attachinary_files", force: :cascade do |t|
     t.integer  "attachinariable_id",   limit: 4
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 20161024122432) do
   end
 
   add_index "attachinary_files", ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+
+  create_table "busy_times", force: :cascade do |t|
+    t.datetime "begin"
+    t.datetime "end"
+    t.string   "service",    limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "name",       limit: 255
+    t.string   "phone",      limit: 255
+    t.text     "info",       limit: 65535
+  end
 
   create_table "free_times", force: :cascade do |t|
     t.datetime "begin"
