@@ -44,7 +44,9 @@ class TimeApiController < ApplicationController
     }
   rescue Exception => e
     render json: {
-        error: e.to_s
+        error: e.to_s,
+        end: self.class._end,
+        adapter: ActiveRecord::Base.connection.adapter_name
     }, status: :bad_request
 
   end
