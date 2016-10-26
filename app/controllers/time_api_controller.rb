@@ -14,7 +14,9 @@ class TimeApiController < ApplicationController
   # columns name END. Also END - is keyword on pgsql
   # to avoid conflict
 
-  _END = '"END"' if ActiveRecord::Base.connection.adapter_name == "PostgreSQL" else 'END'
+  def self._END
+    '"END"' if ActiveRecord::Base.connection.adapter_name == "PostgreSQL" else 'END'
+  end
 
   def show_timetable
     from = @json['from'].to_datetime
@@ -28,7 +30,7 @@ class TimeApiController < ApplicationController
     else
       frees = FreeTime.where("BEGIN >= :from and #{_END} <= :to", from: from, to: to).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
-      busys = BusyTime.where("BEGIN >= :from and #{_END} <= :to", from: from, to: to).
+      busys = BusyTime.where("BEGIN >= :from and #{_EwND} <= :to", from: from, to: to).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
 
     end
