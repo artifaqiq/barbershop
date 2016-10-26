@@ -10,19 +10,25 @@ class TimeApiController < ApplicationController
     end
   end
 
+  # on times tables (free_times & busy_times)
+  # columns name END. Also END - is keyword on pgsql
+  # to avoid conflict
+
+  # _END = '"END"' if ActiveRecord::Base.connection.adapter_name == ""
+
   def show_timetable
     from = @json['from'].to_datetime
     to = @json['to'].to_datetime
 
     if service = @json['service']
-      frees = FreeTime.where("BEGIN >= :from and 'END' <= :to and SERVICE = :service", from: from, to: to, service: service).
+      frees = FreeTime.where("BEGIN >= :from and END <= :to and SERVICE = :service", from: from, to: to, service: service).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
-      busys = BusyTime.where("BEGIN >= :from and 'END' <= :to and SERVICE = :service", from: from, to: to, service: service).
+      busys = BusyTime.where("BEGIN >= :from and END <= :to and SERVICE = :service", from: from, to: to, service: service).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
     else
-      frees = FreeTime.where("BEGIN >= :from and 'END' <= :to", from: from, to: to).
+      frees = FreeTime.where("BEGIN >= :from and END <= :to", from: from, to: to).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
-      busys = BusyTime.where("BEGIN >= :from and 'END' <= :to", from: from, to: to).
+      busys = BusyTime.where("BEGIN >= :from and END <= :to", from: from, to: to).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
 
     end
@@ -32,7 +38,8 @@ class TimeApiController < ApplicationController
         now: Date.today,
         frees: frees.to_s,
         busys: busys.to_s,
-        status: :ok
+        status: :ok,
+        adapter: ActiveRecord::Base.connection.adapter_name
     }
   rescue Exception => e
     render json: {
