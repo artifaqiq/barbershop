@@ -15,14 +15,14 @@ class TimeApiController < ApplicationController
     to = @json['to'].to_datetime
 
     if service = @json['service']
-      frees = FreeTime.where("begin >= :from and end <= :to and service = :service", from: from, to: to, service: service).
+      frees = FreeTime.where("BEGIN >= :from and END <= :to and SERVICE = :service", from: from, to: to, service: service).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
-      busys = BusyTime.where("begin >= :from and end <= :to and service = :service", from: from, to: to, service: service).
+      busys = BusyTime.where("BEGIN >= :from and END <= :to and SERVICE = :service", from: from, to: to, service: service).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
     else
-      frees = FreeTime.where("begin >= :from and end <= :to", from: from, to: to).
+      frees = FreeTime.where("BEGIN >= :from and END <= :to", from: from, to: to).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
-      busys = BusyTime.where("begin >= :from and end <= :to", from: from, to: to).
+      busys = BusyTime.where("BEGIN >= :from and END <= :to", from: from, to: to).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
 
     end
