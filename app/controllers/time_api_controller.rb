@@ -14,7 +14,7 @@ class TimeApiController < ApplicationController
   # columns name END. Also END - is keyword on pgsql
   # to avoid conflict
 
-  def self._END
+  def self._end
     '"END"' if ActiveRecord::Base.connection.adapter_name == "PostgreSQL" else 'END'
   end
 
@@ -23,14 +23,14 @@ class TimeApiController < ApplicationController
     to = @json['to'].to_datetime
 
     if service = @json['service']
-      frees = FreeTime.where("BEGIN >= :from and #{_END} <= :to and SERVICE = :service", from: from, to: to, service: service).
+      frees = FreeTime.where("BEGIN >= :from and #{self.class._end} <= :to and SERVICE = :service", from: from, to: to, service: service).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
-      busys = BusyTime.where("BEGIN >= :from and #{_END} <= :to and SERVICE = :service", from: from, to: to, service: service).
+      busys = BusyTime.where("BEGIN >= :from and #{self.class._end} <= :to and SERVICE = :service", from: from, to: to, service: service).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
     else
-      frees = FreeTime.where("BEGIN >= :from and #{_END} <= :to", from: from, to: to).
+      frees = FreeTime.where("BEGIN >= :from and #{self.class._end} <= :to", from: from, to: to).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
-      busys = BusyTime.where("BEGIN >= :from and #{_EwND} <= :to", from: from, to: to).
+      busys = BusyTime.where("BEGIN >= :from and #{self.class._end} <= :to", from: from, to: to).
           to_a.map { |x| x.as_json(except: [:id, :created_at, :updated_at]) }
 
     end
