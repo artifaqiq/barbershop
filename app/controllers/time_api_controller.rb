@@ -15,7 +15,11 @@ class TimeApiController < ApplicationController
   # to avoid conflict
 
   def self._end
-    "\"END\"" if ActiveRecord::Base.connection.adapter_name == "PostgreSQL" else 'END'
+    if ActiveRecord::Base.connection.adapter_name == "PostgreSQL"
+      "\"END\""
+    else
+      'END2'
+    end
   end
 
   def show_timetable
