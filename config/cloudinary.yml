@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: https-radiant-fjord-73111-herokuapp-com
+  api_key: '557246829415315'
+  api_secret: rLNplPUF28rVOL_adHEFRLEiD80
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: https-radiant-fjord-73111-herokuapp-com
+  api_key: '557246829415315'
+  api_secret: rLNplPUF28rVOL_adHEFRLEiD80
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: https-radiant-fjord-73111-herokuapp-com
+  api_key: '557246829415315'
+  api_secret: rLNplPUF28rVOL_adHEFRLEiD80
+  enhance_image_tag: true
+  static_image_support: false
