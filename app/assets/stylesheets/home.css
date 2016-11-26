@@ -138,3 +138,24 @@ footer a:hover {
 textarea {
   resize: none;
 }
+
+.image {
+  position: relative;
+  width: 100%; /* for IE 6 */
+}
+
+.sale_text {
+  position: absolute;
+  top: 5%;
+  left: -5%;
+  //width: 100%;
+  font-size: 1.2vw;
+  color: black;
+}
+
+.sale {
+  position: absolute;
+  top: -7%;
+  left: -10%;
+  width: 24%;
+}

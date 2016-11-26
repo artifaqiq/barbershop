@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-  <title>Bootstrap Theme The Band</title>
+  <title>Парикмахерская</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <%= stylesheet_link_tag 'home', media: 'all', 'data-turbolinks-track' => true %>
 
 </head>
 <body id="page" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -22,14 +23,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#">Парикмахерская</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">HOME</a></li>
         <li><a href="#services">Услуги</a></li>
         <li><a href="#sales">Акции</a></li>
-        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="#contact">Контакты</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
             <span class="caret"></span></a>
@@ -211,14 +212,15 @@
 
 <!-- Container (Contact Section) -->
 <div id="contact" class="container">
-  <h3 class="text-center">Contact</h3>
+  <h3 class="text-center">Контакты</h3>
   <p class="text-center"><em>We love our fans!</em></p>
 
   <div class="row">
     <div class="col-md-4">
-      <p>Fan? Drop a note.</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
-      <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
+      <p>Мы находимся</p>
+      <p><img src="<%= asset_path("metro.png")%>" style="width: 5%">Каменная горка</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span>Ул. Траливали д. xxx</p>
+      <p><span class="glyphicon glyphicon-phone"></span>Телефон: xxxxxxxxxx</p>
       <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
     </div>
     <div class="col-md-8">
@@ -240,27 +242,6 @@
     </div>
   </div>
   <br>
-  <h3 class="text-center">From The Blog</h3>
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Mike</a></li>
-    <li><a data-toggle="tab" href="#menu1">Chandler</a></li>
-    <li><a data-toggle="tab" href="#menu2">Peter</a></li>
-  </ul>
-
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      <h2>Mike Ross, Manager</h2>
-      <p>Man, we've been on the road for some time now. Looking forward to lorem ipsum.</p>
-    </div>
-    <div id="menu1" class="tab-pane fade">
-      <h2>Chandler Bing, Guitarist</h2>
-      <p>Always a pleasure people! Hope you enjoyed it as much as I did. Could I BE.. any more pleased?</p>
-    </div>
-    <div id="menu2" class="tab-pane fade">
-      <h2>Peter Griffin, Bass player</h2>
-      <p>I mean, sometimes I enjoy the show, but other times I enjoy other things.</p>
-    </div>
-  </div>
 </div>
 
 <div id="googleMap"></div>
