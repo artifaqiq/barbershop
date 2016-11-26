@@ -2,6 +2,21 @@ body {
   font: 400 15px/1.8 Lato, sans-serif;
   color: #777;
 }
+
+h1 {
+    margin: 10px 0 30px 0;
+    letter-spacing: 15px;
+    font-size: 35px;
+    color: #111;
+}
+
+h2 {
+    margin: 10px 0 30px 0;
+    letter-spacing: 3px;
+    font-size: 20px;
+    color: #111;
+}
+
 h3, h4 {
   margin: 10px 0 30px 0;
   letter-spacing: 10px;
@@ -142,20 +157,4 @@ textarea {
 .image {
   position: relative;
   width: 100%; /* for IE 6 */
-}
-
-.sale_text {
-  position: absolute;
-  top: 5%;
-  left: -5%;
-  //width: 100%;
-  font-size: 1.2vw;
-  color: black;
-}
-
-.sale {
-  position: absolute;
-  top: -7%;
-  left: -10%;
-  width: 24%;
 }

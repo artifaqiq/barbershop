@@ -20,16 +20,17 @@
 
 <br/><br/>
 <div id="services" class="container text-center">
-  <h3>Услуги</h3>
+  <h1>Услуги</h1>
 
   <div class="col-sm-12">
     <% @services.each do |service| %>
 
         <div class="col-sm-4" style="margin-bottom: 3%">
           <a href="<%= service_path(service) %>">
-            <%= cl_image_tag(service.photo.path, :width => 300, :class =>"img-circle-person") %>
+            <%= cl_image_tag(service.photo.path, :width => 300) %>
+            <h2><%= service.title %></h2>
           </a>
-          <h2><%= service.title %></h2>
+
 
         </div>
 
@@ -39,17 +40,16 @@
 </div>
 
 <div id="sales" class="container text-center">
-  <h3>Акции</h3>
+  <h1>Акции</h1>
 
   <div class="col-sm-12">
     <% @sales.each do |sale| %>
         <div class="col-sm-4">
-          <div class="image">
+          <div>
             <a href="<%=sale_path(sale) %>">
-              <%= cl_image_tag(sale.photo.path, class: "image")%>
+              <%= cl_image_tag(sale.photo.path, :width => 300)%>
+              <h2><%= sale.title %></h2>
             </a>
-            <img class="sale" src="<%= asset_path("sale.png")%>"/>
-            <div class="sale_text"><%= sale.percent.to_s %>%</div>
           </div>
         </div>
     <% end %>
@@ -59,7 +59,7 @@
 
 <!-- Container (Contact Section) -->
 <div id="contact" class="container">
-  <h3 class="text-center">Контакты</h3>
+  <h1 class="text-center">Контакты</h1>
   <p class="text-center"><em>We love our fans!</em></p>
 
   <div class="row">
