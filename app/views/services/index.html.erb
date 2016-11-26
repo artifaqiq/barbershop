@@ -1,6 +1,6 @@
 <%- model_class = Service -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>Услуги</h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -37,4 +37,21 @@
             new_service_path,
             :class => 'btn btn-primary' %>
 
-<br/><%= debug ''.inspect %>
+<div class="col-sm-2"></div>
+
+<div class="col-sm-8">
+  <% @services.each do |service| %>
+
+    <div class="col-sm-6" style="margin-bottom: 3%">
+      <a href="<%= service_path(service) %>">
+        <%= cl_image_tag(service.photo.path, :width => 300) %>
+      </a>
+      <h2><%= service.title %></h2>
+
+    </div>
+
+  <% end %>
+
+</div>
+
+<div class="col-sm-2"></div>

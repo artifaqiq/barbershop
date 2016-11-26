@@ -15,4 +15,10 @@
  *= require bootstrap_and_overrides
  */
 
+.navbar-custom {
+    color: #000000;
+    color: blue;
+}
+
+
 
