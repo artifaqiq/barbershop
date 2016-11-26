@@ -33,6 +33,8 @@ gem "twitter-bootstrap-rails"
 
 gem 'react-rails', '~> 1.0'
 
+gem 'telegram-bot-ruby'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

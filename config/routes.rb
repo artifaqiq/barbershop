@@ -17,7 +17,9 @@ Rails.application.routes.draw do
     post '/show_timetable' => 'time_api#show_timetable'
     post '/create_free_time' => 'time_api#create_free_time'
     post '/create_busy_time' => 'time_api#create_busy_time'
+    post 'call_me' => 'call_me#call_me'
   end
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
