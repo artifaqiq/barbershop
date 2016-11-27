@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
   <script src="https://vk.com/js/api/openapi.js?136" type="text/javascript"></script>
   <%= stylesheet_link_tag 'home', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'home' %>
@@ -92,33 +93,9 @@
   <br>
 </div>
 
-<div id="googleMap"></div>
+<div id="map"></div>
 
-<!-- Add Google Maps -->
-<script src="https://maps.googleapis.com/maps/api/js"></script>
 <script>
-  var myCenter = new google.maps.LatLng(53.926512, 27.431434);
-
-  function initialize() {
-    var mapProp = {
-      center:myCenter,
-      zoom:12,
-      scrollwheel:false,
-      draggable:false,
-      mapTypeId:google.maps.MapTypeId.ROADMAP
-    };
-
-    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-    var marker = new google.maps.Marker({
-      position:myCenter,
-    });
-
-    marker.setMap(map);
-  }
-
-  google.maps.event.addDomListener(window, 'load', initialize);
-
   VK.init({
     apiId: 5749295,
     onlyWidgets: true
@@ -130,16 +107,11 @@
   VK.Widgets.Comments('vk_comments');
 </script>
 
-<!-- Footer -->
 <footer class="text-center">
   <a class="up-arrow" href="#page" data-toggle="tooltip" title="Наверх">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
 </footer>
-
-<script>
-
-</script>
 
 </body>
 </html>
