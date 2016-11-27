@@ -35,6 +35,10 @@ gem 'react-rails', '~> 1.0'
 
 gem 'telegram-bot-ruby'
 
+gem 'cancancan', '~> 1.10'
+gem 'devise'
+gem 'devise-bootstrap-views'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
