@@ -6,8 +6,10 @@ class CallMeController < ApplicationController
 
   def call_me
 
+    text = "Оставлена заявка на сайте\nИмя: #{@json['name']}\nНомер телефона: #{@json['phone']}\nКомментарий: #{@json['comment']}"
+
     Telegram::Bot::Client.run(Rails.application.secrets.telegram_token) do |bot|
-      bot.api.sendMessage(chat_id: Rails.application.secrets.telegram_chat_id, text: @json.to_s)
+      bot.api.sendMessage(chat_id: Rails.application.secrets.telegram_chat_id, text: text)
     end
 
     render :nothing => true,

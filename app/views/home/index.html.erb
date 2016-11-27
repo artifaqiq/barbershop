@@ -11,6 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <%= stylesheet_link_tag 'home', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'home' %>
 
 </head>
 <body id="page" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -25,9 +26,9 @@
   <div class="col-sm-12">
     <% @services.each do |service| %>
 
-        <div class="col-sm-4" style="margin-bottom: 3%">
+        <div class="col-sm-4">
           <a href="<%= service_path(service) %>">
-            <%= cl_image_tag(service.photo.path, :width => 300) %>
+            <%= cl_image_tag(service.photo.path, :width => 360) %>
             <h2><%= service.title %></h2>
           </a>
 
@@ -47,7 +48,7 @@
         <div class="col-sm-4">
           <div>
             <a href="<%=sale_path(sale) %>">
-              <%= cl_image_tag(sale.photo.path, :width => 300)%>
+              <%= cl_image_tag(sale.photo.path, :width => 360)%>
               <h2><%= sale.title %></h2>
             </a>
           </div>
@@ -60,7 +61,6 @@
   <!-- Container (Contact Section) -->
   <div id="contact" class="container">
     <h1 class="text-center">Контакты</h1>
-  <p class="text-center"><em>We love our fans!</em></p>
 
   <div class="row">
     <div class="col-md-4">
@@ -69,23 +69,24 @@
       <p><span class="glyphicon glyphicon-phone"></span>Телефон: xxxxxxxxxx</p>
       <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
     </div>
-    <div class="col-md-8">
+    <form class="col-md-8">
       <div class="row">
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+          <input class="form-control" id="name" name="name" placeholder="Ваше имя" type="text" required>
         </div>
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+          <input class="form-control" id="phone" name="phone" placeholder="Ваш номер телефона" type="phone" required>
         </div>
       </div>
-      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+      <textarea class="form-control" id="comment" name="comment" placeholder="Ваши пожелания (не обязательно)" rows="5"></textarea>
       <br>
       <div class="row">
         <div class="col-md-12 form-group">
-          <button class="btn pull-right" type="submit">Send</button>
+          <span id="call_me_status"></span>
+          <input type="button" value="Перезвонить мне" class="btn pull-right" type="submit" onclick="call_me(this.form)"/>
         </div>
       </div>
-    </div>
+    </form>
   </div>
   <br>
 </div>
@@ -126,34 +127,7 @@
 </footer>
 
 <script>
-  $(document).ready(function(){
-    // Initialize Tooltip
-    $('[data-toggle="tooltip"]').tooltip();
 
-    // Add smooth scrolling to all links in navbar + footer link
-    $(".navbar a, footer a[href='#page']").on('click', function(event) {
-
-      // Make sure this.hash has a value before overriding default behavior
-      if (this.hash !== "") {
-
-        // Prevent default anchor click behavior
-        event.preventDefault();
-
-        // Store hash
-        var hash = this.hash;
-
-        // Using jQuery's animate() method to add smooth page scroll
-        // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top
-        }, 900, function(){
-
-          // Add hash (#) to URL when done scrolling (default click behavior)
-          window.location.hash = hash;
-        });
-      } // End if
-    });
-  })
 </script>
 
 </body>

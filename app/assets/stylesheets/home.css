@@ -24,7 +24,7 @@ h3, h4 {
   color: #111;
 }
 .container {
-  padding-bottom: 3%;
+  padding-bottom: 0%;
 }
 .person {
   border: 10px solid transparent;
@@ -157,4 +157,12 @@ textarea {
 .image {
   position: relative;
   width: 100%; /* for IE 6 */
+}
+
+.call_me_success {
+    color: green;
+}
+
+.call_me_fail {
+    color: red;
 }
