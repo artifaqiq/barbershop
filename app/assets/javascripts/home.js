@@ -41,6 +41,7 @@ function call_me(form) {
             document.getElementById('call_me_status').innerHTML = "Введите номер телефона";
         } else {
             document.getElementById('call_me_status').innerHTML = "Введите правильный номер телефона";
+            document.getElementById('phone').value = "";
         }
 
         document.getElementById('call_me_status').className = "call_me_fail";
