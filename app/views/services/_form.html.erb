@@ -34,7 +34,7 @@
     <div class="form-group">
       <%= f.label :photo, :class => 'control-label col-lg-2' %>
       <div class="col-lg-10">
-        <%= f.attachinary_file_field :photo, :class => 'form-control' %>
+        <%= f.attachinary_file_field :photo, :class => 'gg' %>
       </div>
       <%= f.error_span(:photo) %>
     </div>
@@ -48,3 +48,12 @@
     </div>
 
 <% end %>
+
+<style>
+  .attachinary-input {
+
+    background-color: #2d2d30;
+    color: red;
+
+  }
+</style>
