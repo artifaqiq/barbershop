@@ -39,7 +39,6 @@ ymaps.ready(function () {
             hintContent: 'Собственный значок метки',
             balloonContent: 'Это красивая метка'
         }, {
-            // Опции.
 
         });
 
