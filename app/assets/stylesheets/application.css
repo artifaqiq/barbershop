@@ -13,9 +13,6 @@
 /*
  *= require_self
  *= require bootstrap_and_overrides
- *= require_tree .
- *= require devise_bootstrap_views
- *= require devise_bootstrap_views_less
  */
 
 .navbar-custom {
