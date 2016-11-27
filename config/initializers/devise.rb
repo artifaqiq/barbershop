@@ -12,7 +12,10 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'artifaqiq@gmail.com'
+
+  config.omniauth :vkontakte, '5749295', 'CSJFQLjHqPsGzakMmJsp',
+                  callback_url: "http://127.0.0.1:3000/users/auth/vkontakte/callback"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
