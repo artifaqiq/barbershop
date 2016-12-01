@@ -18,7 +18,7 @@
 </head>
 <body id="page" data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<%= render partial: 'home/navbar'%>
+<%= render partial: 'home/navbar' %>
 <%= render partial: 'home/carousel' %>
 
 <br/><br/>
@@ -26,21 +26,41 @@
   <h1>Услуги</h1>
 
   <div class="col-sm-12">
-    <% @services.each do |service| %>
-
+    <% @services.each_with_index do |service, i| %>
         <div class="col-sm-4">
-          <a href="<%= service_path(service) %>">
-            <%= cl_image_tag(service.photo.path, :width => 360) %>
+          <a href="javascript:void(0)" onclick="showHide('<%= "prices#{i}" %>')">
+            <% if service.photo %> <%= cl_image_tag(service.photo.path, :width => 360) %>
+            <% end %>
             <h2><%= service.title %></h2>
           </a>
-
-
         </div>
 
     <% end %>
-
   </div>
+
+  <div class="col-sm-12">
+    <% @services.each_with_index do |service, i| %>
+        <table class="table table-striped col-sm-12 text-left" style="display: none" id="<%= "prices#{i}" %>">
+          <thead>
+          <tr>
+            <th>Услуга</th>
+            <th>Стоимость</th>
+          </tr>
+          </thead>
+          <tbody>
+            <% service.prices.each do |price| %>
+                <tr>
+                  <td><%= price.name %></td>
+                  <td><%= price.value %></td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+    <% end %>
+  </div>
+
 </div>
+
 
 <div id="sales" class="container text-center">
   <h1>Акции</h1>
@@ -49,8 +69,8 @@
     <% @sales.each do |sale| %>
         <div class="col-sm-4">
           <div>
-            <a href="<%=sale_path(sale) %>">
-              <%= cl_image_tag(sale.photo.path, :width => 360)%>
+            <a href="<%= sale_path(sale) %>">
+              <%= cl_image_tag(sale.photo.path, :width => 360) %>
               <h2><%= sale.title %></h2>
             </a>
           </div>
@@ -60,13 +80,13 @@
   </div>
 </div>
 
-  <!-- Container (Contact Section) -->
+<!-- Container (Contact Section) -->
 <div id="contact" class="container">
- <h1 class="text-center">Контакты</h1>
+  <h1 class="text-center">Контакты</h1>
 
   <div class="row">
     <div class="col-md-4">
-      <p><img src="<%= asset_path("metro.png")%>" style="width: 5%">Каменная горка</p>
+      <p><img src="<%= asset_path("metro.png") %>" style="width: 5%">Каменная горка</p>
       <p><span class="glyphicon glyphicon-map-marker"></span>Ул. Траливали д. xxx</p>
       <p><span class="glyphicon glyphicon-phone"></span>Телефон: xxxxxxxxxx</p>
       <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
@@ -102,10 +122,13 @@
   });
 </script>
 
+
 <div style="width: 100%" id="vk_comments"></div>
 <script type="text/javascript">
   VK.Widgets.Comments('vk_comments');
 </script>
+
+<script type="text/javascript" src="https://w11145.yclients.com//widgetJS" charset="UTF-8"></script>
 
 <footer class="text-center">
   <a class="up-arrow" href="#page" data-toggle="tooltip" title="Наверх">

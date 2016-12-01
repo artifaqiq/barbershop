@@ -1,29 +1,20 @@
-$(document).ready(function(){
-    // Initialize Tooltip
+$(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
 
-    // Add smooth scrolling to all links in navbar + footer link
-    $(".navbar a, footer a[href='#page']").on('click', function(event) {
-
-        // Make sure this.hash has a value before overriding default behavior
+    $(".navbar a, footer a[href='#page']").on('click', function (event) {
         if (this.hash !== "") {
 
-            // Prevent default anchor click behavior
             event.preventDefault();
 
-            // Store hash
             var hash = this.hash;
 
-            // Using jQuery's animate() method to add smooth page scroll
-            // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
             $('html, body').animate({
                 scrollTop: $(hash).offset().top
-            }, 900, function(){
+            }, 900, function () {
 
-                // Add hash (#) to URL when done scrolling (default click behavior)
                 window.location.hash = hash;
             });
-        } // End if
+        }
     });
 
 })
@@ -38,9 +29,7 @@ ymaps.ready(function () {
         myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
             hintContent: 'Собственный значок метки',
             balloonContent: 'Это красивая метка'
-        }, {
-
-        });
+        }, {});
 
     myMap.geoObjects.add(myPlacemark);
 });
@@ -49,14 +38,14 @@ ymaps.ready(function () {
 function call_me(form) {
     var elems = form;
 
-    if(!elems.name.value) {
+    if (!elems.name.value) {
         document.getElementById('call_me_status').innerHTML = "Введите имя";
         document.getElementById('call_me_status').className = "call_me_fail";
         return;
     }
 
-    if(elems.phone.value.search(/^(\+\d{12}|\d{11})$/) == -1){
-        if(!elems.phone.value) {
+    if (elems.phone.value.search(/^(\+\d{12}|\d{11})$/) == -1) {
+        if (!elems.phone.value) {
             document.getElementById('call_me_status').innerHTML = "Введите номер телефона";
         } else {
             document.getElementById('call_me_status').innerHTML = "Введите правильный номер телефона";
@@ -64,7 +53,7 @@ function call_me(form) {
         }
 
         document.getElementById('call_me_status').className = "call_me_fail";
-        document.getElementById("phone").placeholder="+375xxxxxxxxx"
+        document.getElementById("phone").placeholder = "+375xxxxxxxxx"
         return;
     }
 
@@ -91,4 +80,40 @@ function success(form) {
     document.getElementById('call_me_status').className = "call_me_success"
     form.reset();
 
+}
+
+function animationHover(element, animation) {
+    element = $(element);
+    element.hover(
+        function () {
+            element.addClass('animated ' + animation);
+        },
+        function () {
+            window.setTimeout(function () {
+                element.removeClass('animated ' + animation);
+            }, 2000);
+        });
+}
+
+function showHide(element_id) {
+    hideAllPrices(element_id);
+
+    if (document.getElementById(element_id)) {
+        var obj = document.getElementById(element_id);
+        if (obj.style.display != "inline-table") {
+            obj.style.display = "inline-table";
+        }
+        else obj.style.display = "none";
+    }
+}
+
+function hideAllPrices(except_id) {
+    var el;
+    for(var i = 0; ; i++) {
+        if ((el = document.getElementById("prices" + i)) == null)
+            return;
+        if(el.id != except_id)
+            el.style.display = "none";
+
+    }
 }
