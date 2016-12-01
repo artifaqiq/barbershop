@@ -29,7 +29,7 @@
     <% @services.each_with_index do |service, i| %>
         <div class="col-sm-4">
           <a href="javascript:void(0)" onclick="showHide('<%= "prices#{i}" %>')">
-            <% if service.photo %> <%= cl_image_tag(service.photo.path, :width => 360) %>
+            <% if service.photo %> <%= cl_image_tag(service.photo.path, :width => 360, :height => 202) %>
             <% end %>
             <h2><%= service.title %></h2>
           </a>
