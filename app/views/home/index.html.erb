@@ -27,7 +27,7 @@
 
   <div class="col-sm-12">
     <% @services.each_with_index do |service, i| %>
-        <div class="col-sm-4">
+        <div class="col-sm-<%= col_sm_image(@services.length) %>">
           <a href="javascript:void(0)" onclick="showHide('<%= "prices#{i}" %>')">
             <% if service.photo %> <%= cl_image_tag(service.photo.path, :width => 360, :height => 202) %>
             <% end %>
@@ -67,10 +67,10 @@
 
   <div class="col-sm-12">
     <% @sales.each do |sale| %>
-        <div class="col-sm-4">
+        <div class="col-sm-<%= col_sm_image(@sales.length )%>">
           <div>
             <a href="<%= sale_path(sale) %>">
-              <%= cl_image_tag(sale.photo.path, :width => 360) %>
+              <%= cl_image_tag(sale.photo.path, :width => 360, :alt => sale.percent) %>
               <h2><%= sale.title %></h2>
             </a>
           </div>
