@@ -1,5 +1,4 @@
 ActiveAdmin.register Service do
-  3
   permit_params :title, :description, :photo
 
   form do |f|
@@ -11,8 +10,5 @@ ActiveAdmin.register Service do
       actions
     end
   end
-
-
-
 
 end
